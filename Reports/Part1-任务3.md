@@ -41,10 +41,10 @@ class BaselineNet(nn.Module):
 ```
 - 2（回来检查时二编）
    - 残差连接
-   - derainnet里面的多尺度（不同分辨率下，任务分流）
-   - unet里面的上下采样
-   - 空洞卷积![img_71.png](img_71.png)
-   - 大卷积核
+   - derainnet里面的多尺度（不同分辨率下，任务分流）图像金字塔（把一份特征变成多份分辨率来并行看）
+   - unet里面的上下采样（编码器一层层变小，再跳跃连接拼回）
+   - 空洞卷积![img_71.png](img_71.png)(卷积核里插空洞)
+   - 大卷积核(成本upup)
    - 注意力机制（直接建立全局依赖）
 3. 
 - 1. 运行截图![img_5.png](img_5.png)
@@ -52,7 +52,7 @@ class BaselineNet(nn.Module):
 ！！！！！！！！！！！！！！！！！！！！！经过我和kaggle验证码显示不出来的问题折腾了好几天终于弄出来了，我也是用上cpu了
 太爽了，20min结束
 ![img_6.png](img_6.png)
-- 2. argparse 命令行参数笔记（学的代码是指命令行设置相关的吗...）
+- 2. argparse 命令行参数笔记（学的代码是指命令行设置相关的吗...对于文件夹里面的其他题目未涉及的代码我也进行了研读，笔记在mynote）
 1. 作用：让程序能通过"命令行"接收参数，不用每次改代码里写死的值
 2. 创建解析器： `parser = argparse.ArgumentParser(description="Deraining Model Training")`
 2. 加参数：      `parser.add_argument(...)`  （一个参数一行）

@@ -218,8 +218,7 @@ class Mymodel(nn.Module):
             x_cat = torch.cat([x_prev, y], dim=1)
             x_in = self.f_in(x_cat)
             h_state, c_state = self.conv_lstm_cell(x_in, (h_state, c_state))
-            res_feat = self.rm(h_state) + h_state
-            res_feat = self.tfam(res_feat)
+            res_feat = self.tfam(self.rm(h_state)) + x_in
             rain_layer = self.f_out(res_feat)
             x_prev = torch.clamp(y - rain_layer, 0, 1)
         return x_prev
